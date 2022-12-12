@@ -41,33 +41,8 @@ class Images_schema(ma.Schema):
         Model  = Images
         fields = ("title", "url", "thumbnailUrl")
 
-@app.route('/images', methods=['POST'])
-def imagess():
-    form = ImgForm(form=request.form, files=request.files)
-    if form.validate_on_submit():
-        return 'saved'
+@app.before_first_request
 
-    return f'not saved, {form.errors}'
-
-    # image = request.files['file']
-    # dbfile = Images()
-    # dbfile.poster.put(image, filename=image.filename, content_type=image.content_type)
-    # dbfile.save()
-
-    return 'save'
-
-@app.route('/img/<id>/', methods=['GET'])
-def get_image(id):
-    img = Images.objects.get_or_404(id=id)
-    image = img.poster.read()
-    content_type = img.poster.content_type
-    filename = img.poster.filename
-
-    return send_file(
-        BytesIO(image), 
-        download_name=filename, 
-        mimetype=content_type
-    ), 200
 
 
 @app.route('/favicon.ico')
