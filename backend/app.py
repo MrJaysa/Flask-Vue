@@ -6,7 +6,7 @@ from requests import get
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///tmp/db.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///./tmp/db.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy()
@@ -54,17 +54,17 @@ def before_first_request():
             )
             img.save()
 
-@app.route('/get-data')
+@app.route('/api/get-data')
 def present_data():
     schema = Images_schema(many=True)
-    data = Images.query.paginate(request.args.get('page', 1, type=int), 10, False)
+    data = Images.query.paginate(page=request.args.get('page', 1, type=int), per_page=10, error_out=False)
     
     return jsonify(
         status   = 200,
         data     = schema.dump(data.items),
-        next_url = data.next_num,
         has_next = data.has_next,
-        page     = data.page
+        page     = data.page,
+        total_page = data.total//10
     ), 200
 
 @app.route('/favicon.ico')

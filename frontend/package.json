@@ -10,7 +10,9 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
-    "vue": "^3.2.45"
+    "@vueuse/core": "^9.6.0",
+    "vue": "^3.2.45",
+    "vue-intersection-observer": "^0.1.9"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.4",
