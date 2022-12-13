@@ -18,6 +18,10 @@
   display: flex;
 }
 
+p {
+  margin-top: 10px !important;
+}
+
 .details {
   flex: 1;
   margin-left: 1rem;

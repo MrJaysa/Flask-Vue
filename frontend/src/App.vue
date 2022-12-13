@@ -1,6 +1,6 @@
 <script setup>
-import HelloWorld from "./components/HelloWorld.vue";
-import TheWelcome from "./components/TheWelcome.vue";
+import Main from "./components/Main.vue";
+import Side from "./components/Side.vue";
 </script>
 
 <template>
@@ -8,18 +8,18 @@ import TheWelcome from "./components/TheWelcome.vue";
     <img
       alt="Vue logo"
       class="logo"
-      src="./assets/logo.svg"
-      width="125"
-      height="125"
+      src="./assets/flask-vue.png"
+      width="250"
+      height="150"
     />
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <Main msg="Flask + Vue!" />
     </div>
   </header>
 
   <main>
-    <TheWelcome />
+    <Side />
   </main>
 </template>
 
@@ -31,6 +31,7 @@ header {
 .logo {
   display: block;
   margin: 0 auto 2rem;
+  border-radius: 10px;
 }
 
 @media (min-width: 1024px) {
